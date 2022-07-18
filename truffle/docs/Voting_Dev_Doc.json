@@ -1,0 +1,54 @@
+{
+  "author": "Thomas Kieffer",
+  "kind": "dev",
+  "methods": {
+    "addProposal(string)": {
+      "details": "Only registered voters can call this function.",
+      "params": { "_desc": "The proposal description." }
+    },
+    "addVoter(address)": {
+      "details": "Only owner can call this function.",
+      "params": { "_addr": "Address of the voter to be registered." }
+    },
+    "endProposalsRegistering()": {
+      "details": "Only Owner can call this function. Voting session state must be ProposalsRegistrationStarted to proceed."
+    },
+    "endVotingSession()": {
+      "details": "Only Owner can call this function. Voting session state must be VotingSessionStarted to proceed."
+    },
+    "getOneProposal(uint256)": {
+      "details": "The proposal is in the array proposalsArray.",
+      "params": {
+        "_id": "Identification number of the proposal to be retrieve."
+      },
+      "returns": { "_0": "The proposal structure." }
+    },
+    "getVoter(address)": {
+      "details": "The voter is in the map voters",
+      "params": { "_addr": "Address of the voter to be retrieve." },
+      "returns": { "_0": "The voter structure." }
+    },
+    "owner()": { "details": "Returns the address of the current owner." },
+    "renounceOwnership()": {
+      "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+    },
+    "setVote(uint256)": {
+      "details": "Only registered voters can call this function.",
+      "params": { "_id": "The identification number of the proposal." }
+    },
+    "startProposalsRegistering()": {
+      "details": "Only Owner can call this function. Voting session state must be RegisteringVoters to proceed."
+    },
+    "startVotingSession()": {
+      "details": "Only Owner can call this function. Voting session state must be ProposalsRegistrationEnded to proceed."
+    },
+    "tallyVotes()": {
+      "details": "Only Owner can call this function. Voting session state must be VotingSessionEnded to proceed."
+    },
+    "transferOwnership(address)": {
+      "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+    }
+  },
+  "title": "A voting simulator",
+  "version": 1
+}

@@ -1,0 +1,397 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta
+      name="description"
+      content="Web site created with EthDoc"
+  />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <style>
+        #ethdoc-viewer{
+            font-size: 0.8em;
+            padding: 1em;
+        }
+        #ethdoc-viewer .lead{
+            font-size: 1em;
+        }
+        #ethdoc-viewer table {
+            width: 50%;
+        }
+        #ethdoc-viewer hr {
+            margin: 0;
+            margin-bottom: 0.5rem;
+        }
+        #ethdoc-viewer p{
+            margin-bottom: 0.5rem;
+        }
+    </style>
+
+    <div id="ethdoc-viewer">
+    
+        
+    <h3>Voting <small>: A voting simulator</small></h3>
+
+    <p class="lead">You can use this contract to vote for proposals. Multiple voter can vote if they are registered by the owner.</p>
+
+    <p>Author: Thomas Kieffer</p>
+
+    <br />
+    <p><strong>Functions</strong></p>
+
+
+        
+          <hr>
+            <h6>addProposal</h6>
+
+            <p>Only registered voters can call this function.</p>
+
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td>_desc</td>
+        <td>string</td>
+        <td>The proposal description.</td>
+        </tr>
+              </tbody>
+      </table>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>addVoter</h6>
+
+            <p>Only owner can call this function.</p>
+
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td>_addr</td>
+        <td>address</td>
+        <td>Address of the voter to be registered.</td>
+        </tr>
+              </tbody>
+      </table>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>endProposalsRegistering</h6>
+
+            <p>Only Owner can call this function. Voting session state must be ProposalsRegistrationStarted to proceed.</p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>endVotingSession</h6>
+
+            <p>Only Owner can call this function. Voting session state must be VotingSessionStarted to proceed.</p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>getOneProposal</h6>
+
+            <p>The proposal is in the array proposalsArray.</p>
+
+
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td>_id</td>
+        <td>uint256</td>
+        <td>Identification number of the proposal to be retrieve.</td>
+        </tr>
+              </tbody>
+      </table>
+                  
+            <p>Returns:</p>
+           
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td></td>
+        <td>tuple</td>
+        <td></td>
+        </tr>
+              </tbody>
+      </table>
+            
+
+          <hr>
+            <h6>getVoter</h6>
+
+            <p>The voter is in the map voters</p>
+
+
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td>_addr</td>
+        <td>address</td>
+        <td>Address of the voter to be retrieve.</td>
+        </tr>
+              </tbody>
+      </table>
+                  
+            <p>Returns:</p>
+           
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td></td>
+        <td>tuple</td>
+        <td></td>
+        </tr>
+              </tbody>
+      </table>
+            
+
+          <hr>
+            <h6>owner</h6>
+
+            <p>Returns the address of the current owner.</p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td></td>
+        <td>address</td>
+        <td></td>
+        </tr>
+              </tbody>
+      </table>
+            
+
+          <hr>
+            <h6>renounceOwnership</h6>
+
+            <p>Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.</p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>setVote</h6>
+
+            <p>Only registered voters can call this function.</p>
+
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td>_id</td>
+        <td>uint256</td>
+        <td>The identification number of the proposal.</td>
+        </tr>
+              </tbody>
+      </table>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>startProposalsRegistering</h6>
+
+            <p>Only Owner can call this function. Voting session state must be RegisteringVoters to proceed.</p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>startVotingSession</h6>
+
+            <p>Only Owner can call this function. Voting session state must be ProposalsRegistrationEnded to proceed.</p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>tallyVotes</h6>
+
+            <p>Only Owner can call this function. Voting session state must be VotingSessionEnded to proceed.</p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>transferOwnership</h6>
+
+            <p>Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.</p>
+
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td>newOwner</td>
+        <td>address</td>
+        <td></td>
+        </tr>
+              </tbody>
+      </table>
+                  
+            <p>Returns:</p>
+           
+            <p>No parameters</p>
+            
+
+          <hr>
+            <h6>winningProposalID</h6>
+
+            <p><strong>**Add Documentation for the method here**</strong></p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td></td>
+        <td>uint256</td>
+        <td></td>
+        </tr>
+              </tbody>
+      </table>
+            
+
+          <hr>
+            <h6>workflowStatus</h6>
+
+            <p><strong>**Add Documentation for the method here**</strong></p>
+
+            <p>No parameters</p>
+                  
+            <p>Returns:</p>
+           
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+    <tr>
+        <td></td>
+        <td>uint8</td>
+        <td></td>
+        </tr>
+              </tbody>
+      </table>
+            
+    
+    </div>
+
+  </body>
+  </html>

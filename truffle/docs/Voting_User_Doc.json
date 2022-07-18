@@ -1,0 +1,33 @@
+{
+  "kind": "user",
+  "methods": {
+    "addProposal(string)": {
+      "notice": "Registered voters can add a proposal."
+    },
+    "addVoter(address)": {
+      "notice": "Register a voter to the voting session."
+    },
+    "endProposalsRegistering()": {
+      "notice": "Change the voting session state to ProposalsRegistrationEnded. Registered voters cannot add proposals anymore."
+    },
+    "endVotingSession()": {
+      "notice": "Change the voting session state to VotingSessionEnded. Registered voters cannot vote for one proposal anymore."
+    },
+    "getOneProposal(uint256)": { "notice": "Returns a proposal." },
+    "getVoter(address)": { "notice": "Returns a voter." },
+    "setVote(uint256)": {
+      "notice": "Registered voters can vote for a proposal."
+    },
+    "startProposalsRegistering()": {
+      "notice": "Change the voting session state to RegisteringVoters. Registered voters are allow to add proposals."
+    },
+    "startVotingSession()": {
+      "notice": "Change the voting session state to VotingSessionStarted. Registered voters can vote for one proposal."
+    },
+    "tallyVotes()": {
+      "notice": "Calculate the winning proposal. Winning proposal can now be retrieve from winningProposalID."
+    }
+  },
+  "notice": "You can use this contract to vote for proposals. Multiple voter can vote if they are registered by the owner.",
+  "version": 1
+}
