@@ -6,6 +6,7 @@ import UserAddress from "./components/UserAddress.jsx";
 import Workflow from "./components/Workflow";
 import Voters from "./components/Voters";
 import Proposals from "./components/Proposals";
+import SetVote from "./components/SetVote";
 
 function App() {
   // const [web3, setWeb3] = useState(null);
@@ -54,9 +55,6 @@ function App() {
 
         //here we listen for workflow status changes
         instance.events.WorkflowStatusChange(fromLast).on("data", (event) => {
-          // console.log("event capté");
-          // console.log(event);
-          // console.log(event.returnValues.newStatus);
           setWorkflowStatus(event.returnValues.newStatus);
         });
 
@@ -67,24 +65,12 @@ function App() {
             return add.returnValues.voterAddress;
           })
         );
-        // console.log(
-        //   addresses.map((add) => {
-        //     return add.returnValues.voterAddress;
-        //   })
-        // );
-
         // here we listen for next proposals events
         instance.events.VoterRegistered(fromLast).on("data", (event) => {
-          // console.log("usesEffect");
-          // console.log(event);
-          // addresses.push(event);
-          // console.log(addresses);
-          // setaddressVoters(addresses);
           setaddressVoters((prevAddresses) => {
             return [...prevAddresses, event.returnValues.voterAddress];
           });
         });
-        // console.log(addresses);
 
         // here we listen for past voter registered
         let proposalsEvt = await instance.getPastEvents("ProposalRegistered", from0Tolast);
@@ -93,19 +79,8 @@ function App() {
             return prop.returnValues.proposalId;
           })
         );
-        // console.log(
-        //   addresses.map((add) => {
-        //     return add.returnValues.voterAddress;
-        //   })
-        // );
-
         // here we listen for next voter registered
         instance.events.ProposalRegistered(fromLast).on("data", (event) => {
-          // console.log("usesEffect");
-          // console.log(event);
-          // addresses.push(event);
-          // console.log(addresses);
-          // setaddressVoters(addresses);
           setProposals((prevProposal) => {
             return [...prevProposal, event.returnValues.proposalId];
           });
@@ -126,7 +101,8 @@ function App() {
         <UserAddress accounts={accounts} addressVoters={addressVoters} />
         <Workflow contract={contract} accounts={accounts} workflow={workflowStatus} isOwner={isOwner} />
         <Voters contract={contract} accounts={accounts} workflow={workflowStatus} isOwner={isOwner} addressVoters={addressVoters} />
-        <Proposals contract={contract} accounts={accounts} workflow={workflowStatus} isOwner={isOwner} addressVoters={addressVoters} proposals={proposals} />
+        <Proposals contract={contract} accounts={accounts} workflow={workflowStatus} addressVoters={addressVoters} proposals={proposals} />
+        <SetVote contract={contract} accounts={accounts} workflow={workflowStatus} addressVoters={addressVoters} proposals={proposals} />
       </div>
     </div>
   );

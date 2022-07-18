@@ -4,10 +4,7 @@ function Voters(props) {
   const [voterAddr, setVoterAddr] = useState("");
 
   const addVoter = async () => {
-    // console.log(voterAddr);
-    // console.log(props.accounts[0]);
     const response = await props.contract.methods.addVoter(voterAddr).send({ from: props.accounts[0] });
-    // console.log(response);
   };
 
   function handleOnChange(event) {

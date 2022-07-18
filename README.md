@@ -68,13 +68,13 @@ $ npm run deploy
 
       Removed the security breach (Now we can only add a specific amount of proposals). ✔️
       Added natspec and generated documentation (in truffle/docs). ✔️
-      Add elements of good practice and naming for the .sol (I haven't noticed major changes to be done). ✔️
+      Add elements of good practice and naming for the .sol (I haven't noticed major changes to be done, even when comparing with solidity guidelines). ✔️
       have a decentralized application ✔️
       videos of workflow (loom WIP) ❌
       events usage ✔️
       show the account used ✔️
       deploy the application on public server (WIP, provide link)❌
-      display adapted to the account used (isOwner, isVoter or both) (to check)
+      display adapted to the account used (isOwner, isVoter or both, also workflow) (to check)
 
 - __What's left ?__
 
