@@ -1,40 +1,89 @@
-# React Truffle Box
+# Voting Dapp
 
-This box comes with everything you need to start using Truffle to write, compile, test, and deploy smart contracts, and interact with them from a React app.
+(Work in progress)
+This project has been done as part of my blockchain developper training at Alyra, to teach us how to write a dapp and deploy it.
+It makes use of React and web3 to interact with the smart contract.
 
-## Installation
+## How to use
 
-First ensure you are in an empty directory.
-
-Run the `unbox` command using 1 of 2 ways.
+### For local using ganache
 
 ```sh
-# Install Truffle globally and run `truffle unbox`
-$ npm install -g truffle
-$ truffle unbox react
+# I one terminal
+$ cd truffle
+$ ganache -m "REPLACE WITH YOUR MNEMONIC"
 ```
 
 ```sh
-# Alternatively, run `truffle unbox` via npx
-$ npx truffle unbox react
+# other terminal
+$ cd truffle
+$ cd truffle migrate --reset
 ```
 
-Start the react dev server.
-
 ```sh
+# other terminal
 $ cd client
-$ npm start
-  Starting the development server...
+$ cd npm start
 ```
 
-From there, follow the instructions on the hosted React app. It will walk you through using Truffle and Ganache to deploy the `SimpleStorage` contract, making calls to it, and sending transactions to change the contract's state.
+### For local using Ropsten ( or others testnets)
 
-## FAQ
+```sh
+# I one terminal
+$ cd truffle
+$ ganache -m "REPLACE WITH YOUR MNEMONIC"
+```
 
-- __How do I use this with Ganache (or any other network)?__
+```sh
+# other terminal
+$ cd truffle
+$ truffle migrate --reset --network ropsten
+```
 
-  The Truffle project is set to deploy to Ganache by default. If you'd like to change this, it's as easy as modifying the Truffle config file! Check out [our documentation on adding network configurations](https://trufflesuite.com/docs/truffle/reference/configuration/#networks). From there, you can run `truffle migrate` pointed to another network, restart the React dev server, and see the change take place.
+```sh
+# other terminal
+$ cd client
+$ cd npm start
+```
 
-- __Where can I find more resources?__
+### For Ropsten on Infuria node
 
-  This Box is a sweet combo of [Truffle](https://trufflesuite.com) and [Create React App](https://create-react-app.dev). Either one would be a great place to start!
+```sh
+# other terminal
+$ cd client
+$ npm run deploy
+```
+
+## Workflow tour in videos
+
+<ul>
+    <li><a href="https://www.kickassfacts.com/wp-content/uploads/2016/02/Animals.jpg">PlaceHolder</a></li>
+    <li><a href="https://www.kickassfacts.com/wp-content/uploads/2016/02/Animals.jpg">PlaceHolder</a></li>
+    <li><a href="https://www.kickassfacts.com/wp-content/uploads/2016/02/Animals.jpg">PlaceHolder</a></li>
+</ul>
+
+## State
+
+- __What has been done ?__
+
+      Removed the security breach (Now we can only add a specific amount of proposals). ✔️
+      Added natspec and generated documentation (in truffle/docs). ✔️
+      Add elements of good practice and naming for the .sol (I haven't noticed major changes to be done). ✔️
+      have a decentralized application ✔️
+      videos of workflow (loom WIP) ❌
+      events usage ✔️
+      show the account used ✔️
+      deploy the application on public server (WIP, provide link)❌
+      display adapted to the account used (isOwner, isVoter or both) (to check)
+
+- __What's left ?__
+
+      Call every function (cannot call getOneProposal in map...), others function still need to be implemented (setvote, tallyVotes) ❌
+      Use CSS for style. ❌
+      Learn from mistakes and do better next time.
+      This was my first project in React, I've made many mistakes, got stuck a lot. A lot of my designs choice are not good but I don't have time to change them.
+      Make smaller components.
+
+Thanks !
+
+  Thanks to Remi Sulpice and his <a href="https://www.kickassfacts.com/wp-content/uploads/2016/02/Animals.jpg">template</a> which allowed me to get a foot in React and Web3.
