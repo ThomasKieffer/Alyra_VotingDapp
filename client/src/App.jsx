@@ -12,12 +12,13 @@ function App() {
   // const [web3, setWeb3] = useState(null);
   const [accounts, setAccounts] = useState("");
   const [contract, setContract] = useState("");
-  const [owner, setOwner] = useState("");
+  // const [owner, setOwner] = useState("");
   const [isOwner, setIsOwner] = useState("");
 
   const [workflowStatus, setWorkflowStatus] = useState(0);
   const [addressVoters, setaddressVoters] = useState([]);
   const [proposals, setProposals] = useState([]);
+  const [winner, setWinner] = useState(0);
 
   useEffect(() => {
     async function setUpWeb3() {
@@ -32,9 +33,12 @@ function App() {
         setAccounts(accounts);
         setContract(instance);
 
+        //retrieve winner in case already one
+        setWinner(await instance.methods.winningProposalID().call({ from: accounts[0] }));
+
         //récupère l'addresse du owner.
-        const own = await instance.methods.owner().call({ from: accounts[0] });
-        setOwner(own);
+        const owner = await instance.methods.owner().call({ from: accounts[0] });
+        // setOwner(own);
 
         //initialize the workflow in the state
         const initWorkflow = await instance.methods.workflowStatus().call({ from: accounts[0] });
@@ -42,7 +46,7 @@ function App() {
 
         //check if the current user is the owner
         // console.log(own === accounts[0]);
-        setIsOwner(own === accounts[0]);
+        setIsOwner(owner === accounts[0]);
 
         let from0Tolast = {
           fromBlock: 0,
@@ -58,28 +62,28 @@ function App() {
           setWorkflowStatus(event.returnValues.newStatus);
         });
 
-        // here we listen for past proposals events
+        // here we listen for past voter registered
         let addresses = await instance.getPastEvents("VoterRegistered", from0Tolast);
         setaddressVoters(
           addresses.map((add) => {
             return add.returnValues.voterAddress;
           })
         );
-        // here we listen for next proposals events
+        // here we listen for next voter registered
         instance.events.VoterRegistered(fromLast).on("data", (event) => {
           setaddressVoters((prevAddresses) => {
             return [...prevAddresses, event.returnValues.voterAddress];
           });
         });
 
-        // here we listen for past voter registered
+        // here we listen for past proposals events
         let proposalsEvt = await instance.getPastEvents("ProposalRegistered", from0Tolast);
         setProposals(
           proposalsEvt.map((prop) => {
             return prop.returnValues.proposalId;
           })
         );
-        // here we listen for next voter registered
+        // here we listen for next proposals events
         instance.events.ProposalRegistered(fromLast).on("data", (event) => {
           setProposals((prevProposal) => {
             return [...prevProposal, event.returnValues.proposalId];
@@ -99,7 +103,7 @@ function App() {
       <div className="container">
         <h1>Voting</h1>
         <UserAddress accounts={accounts} addressVoters={addressVoters} />
-        <Workflow contract={contract} accounts={accounts} workflow={workflowStatus} isOwner={isOwner} />
+        <Workflow contract={contract} accounts={accounts} workflow={workflowStatus} isOwner={isOwner} winner={winner} setWinner={setWinner} />
         <Voters contract={contract} accounts={accounts} workflow={workflowStatus} isOwner={isOwner} addressVoters={addressVoters} />
         <Proposals contract={contract} accounts={accounts} workflow={workflowStatus} addressVoters={addressVoters} proposals={proposals} />
         <SetVote contract={contract} accounts={accounts} workflow={workflowStatus} addressVoters={addressVoters} proposals={proposals} />

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function SetVote(props) {
   const [voteId, setVoteId] = useState(0);
+  //check onlyVoter
   const registered = props.addressVoters.includes(props.accounts[0], 0);
 
   function handleOnChange(event) {
@@ -10,13 +11,13 @@ function SetVote(props) {
   }
 
   const vote = async () => {
-    const response = await props.contract.methods.setVote(voteId).send({ from: props.accounts[0] });
+    await props.contract.methods.setVote(voteId).send({ from: props.accounts[0] });
   };
 
   return (
     <div>
       <h1>Vote for a proposal</h1>
-      {/* Check if is registered and workflow == votingSessionStarted */}
+      {/* Check if is onlyVoter and workflow == votingSessionStarted */}
       {registered && props.workflow === "3" && (
         <div>
           <input name="Vote" placeholder="Id of proposal" value={voteId} onChange={handleOnChange} />

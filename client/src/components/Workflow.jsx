@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 function Workflow(props) {
-  const [winner, setWinner] = useState(0);
+  // const [winner, setWinner] = useState(0);
 
   const nextWorkflow = async () => {
     switch (props.workflow) {
@@ -23,7 +23,7 @@ function Workflow(props) {
 
       case "4": //Caluclate winner and set it.
         await props.contract.methods.tallyVotes().send({ from: props.accounts[0] });
-        setWinner(await props.contract.methods.winningProposalID().call({ from: props.accounts[0] }));
+        props.setWinner(await props.contract.methods.winningProposalID().call({ from: props.accounts[0] }));
         break;
 
       default:
@@ -42,10 +42,11 @@ function Workflow(props) {
         {props.workflow === "5" && (
           <div>
             <h1>Workflow : Votes tallied</h1>
-            <h1>Winner is {winner}</h1>
+            <h1>Winner is {props.winner}</h1>
           </div>
         )}
       </div>
+      {/* Only owner can change the workflow */}
       {props.isOwner && (
         <div>
           {props.workflow === "0" && <button onClick={nextWorkflow}>Start proposals registration</button>}

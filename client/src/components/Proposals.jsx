@@ -1,56 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Proposals(props) {
   const [proposalDesc, setProposalDesc] = useState("");
+  const [descriptions, setDescriptions] = useState([]);
   const registered = props.addressVoters.includes(props.accounts[0], 0);
 
-  //   const [proposalFromPromise, setproposalFromPromise] = useState("");
-  //   const [proposalPromises, setProposalPromises] = useState("");
-  const [proposalPromisesDesc, setProposalPromisesDesc] = useState("");
-
   const addProposal = async () => {
-    const response = await props.contract.methods.addProposal(proposalDesc).send({ from: props.accounts[0] });
+    await props.contract.methods.addProposal(proposalDesc).send({ from: props.accounts[0] });
   };
 
   function handleOnChange(event) {
     const { value } = event.target;
     setProposalDesc(value);
   }
+  useEffect(() => {
+    async function retrieveProposalsContent(id) {
+      if (registered) {
+        const content = await props.contract.methods.getOneProposal(id).call({ from: props.accounts[0] });
+        console.log(content);
+        return content;
+      }
+      return "";
+    }
 
-  //   const data;
-  const getDescriptionPromise = async () => {
-    await props.proposals.map(async (proposal, id) => {
-      const promise = await props.contract.methods.getOneProposal(proposal).call({ from: props.accounts[0] });
-      console.log(promise);
-      setProposalPromisesDesc(promise.description);
-      console.log(proposalPromisesDesc);
+    //reinitiate proposal if we add another one
+    setDescriptions([]);
+
+    //TODO: refactor this mess
+    props.proposals.map(async (proposal, id) => {
+      const propContent = await retrieveProposalsContent(proposal);
+      setDescriptions((prevDescription) => {
+        return [...prevDescription, propContent.description];
+      });
     });
-    // const promise = await props.contract.methods.getOneProposal().call({ from: props.accounts[0] });
-    // console.log(promise);
-
-    // console.log(promise.description);
-    // console.log(promise.voteCount);
-    // setProposalPromises(promise.description);
-    // console.log(promise.description);
-    // data = {promise.description, promise.description}
-    // return promise.description;
-    // setproposalFromPromise(promise.description);
-  };
-
-  React.useEffect(() => {
-    getDescriptionPromise();
-  }, []);
+  }, [props.proposals, props.accounts, props.contract.methods, registered]);
 
   return (
     <div>
       <h1>Proposals</h1>
-      {props.proposals.map((proposal, id) => {
-        {
-          /* getDescriptionPromise(proposal); */
-        }
+      {props.proposals.map((proposal) => {
         return (
-          <h5 key={id}>
-            {id} : {proposal}
+          <h5 key={proposal}>
+            {proposal} : {descriptions[proposal]}
           </h5>
         );
       })}

@@ -1,6 +1,7 @@
 import React from "react";
 
 function UserAddress(props) {
+  //check onlyVoter
   const registered = props.addressVoters.includes(props.accounts[0], 0);
   return (
     <div>
