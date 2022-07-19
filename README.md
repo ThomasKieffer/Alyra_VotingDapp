@@ -65,9 +65,10 @@ You can access my app with the following link :
 <ul>
     <li><a href="https://www.loom.com/share/686998148fb4466caea45fce3aed6f6f">Presentation app (1/2)</a></li>
     <li><a href="https://www.loom.com/share/8851ebd37b6b4ee7ab21f654bdb1657f">Presentation app (2/2)</a></li>
-⚠️ Pour le bug montré dans la deuxième vidéo, un quick fix est de rafraichir la page pour voir les porpositions dans le bon ordre.
+    <li><a href="https://www.loom.com/share/5e7e6c4a008c48e1b6800f384d775a27">Workaround</a></li>
+    ⚠️ Pour le bug montré dans la deuxième vidéo, un quick fix est de rafraichir la page pour voir les porpositions dans le bon ordre.
     Je cherche comment rêgler vraiment le problème et reposterai une vidéo quand j'y arriverai.
-    <li><a href="https://www.kickassfacts.com/wp-content/uploads/2016/02/Animals.jpg">PlaceHolder</a></li>
+    <li><a href="https://www.loom.com/share/2b26ea172fe3465080c4f3304f227ae3">Quick explanation of the code</a></li>
 </ul>
 
 ## State
