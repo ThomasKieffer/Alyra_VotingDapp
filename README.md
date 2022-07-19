@@ -54,6 +54,12 @@ $ cd client
 $ npm run deploy
 ```
 
+## Github pages
+
+You can access my app with the following link : 
+<a href="https://ThomasKieffer.github.io/Alyra_VotingDapp/">https://ThomasKieffer.github.io/Alyra_VotingDapp/</a>
+
+
 ## Workflow tour in videos
 
 <ul>
