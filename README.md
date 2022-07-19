@@ -76,7 +76,7 @@ You can access my app with the following link :
       Added natspec and generated documentation (in truffle/docs). ✔️
       Add elements of good practice and naming for the .sol (I haven't noticed major changes to be done, even when comparing with solidity guidelines). ✔️
       have a decentralized application ✔️
-      videos of workflow (loom WIP) ❌
+      videos of workflow (loom WIP) ✔️
       events usage ✔️
       show the account used ✔️
       deploy the application on public server (WIP, provide link)✔️
