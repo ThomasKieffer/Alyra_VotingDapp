@@ -63,8 +63,8 @@ You can access my app with the following link :
 ## Workflow tour in videos
 
 <ul>
-    <li><a href="https://www.kickassfacts.com/wp-content/uploads/2016/02/Animals.jpg">PlaceHolder</a></li>
-    <li><a href="https://www.kickassfacts.com/wp-content/uploads/2016/02/Animals.jpg">PlaceHolder</a></li>
+    <li><a href="https://www.loom.com/share/686998148fb4466caea45fce3aed6f6f">Presentation app (1/2)</a></li>
+    <li><a href="https://www.loom.com/share/8851ebd37b6b4ee7ab21f654bdb1657f">Presentation app (2/2)</a></li>
     <li><a href="https://www.kickassfacts.com/wp-content/uploads/2016/02/Animals.jpg">PlaceHolder</a></li>
 </ul>
 
