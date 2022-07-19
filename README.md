@@ -79,7 +79,7 @@ You can access my app with the following link :
       videos of workflow (loom WIP) ❌
       events usage ✔️
       show the account used ✔️
-      deploy the application on public server (WIP, provide link)❌
+      deploy the application on public server (WIP, provide link)✔️
       display adapted to the account used (isOwner, isVoter or both, also workflow) ✔️
 
 - __What's left ?__
